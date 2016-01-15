@@ -15,7 +15,7 @@
         let injectTableMarkup = () => ({__html: props.sheetsData.html});
         return (
           <div>
-            <table className="stacked">
+            <table className="stack hover">
               <thead>
                 <tr>
                   {props.sheetsData.rows[0].cellsArray.map((cell, index, array) => {
