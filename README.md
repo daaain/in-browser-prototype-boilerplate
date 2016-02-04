@@ -5,3 +5,5 @@ A simple boilerplate for getting started with ES6 React (compiled runtime with B
 No toolchain setup, no server (works off file:///). Loads all libraries from CDNs (which also get cached) so speed is "decent enough".
 
 On top of these Sheetrock enables you to load sample data in from a Google Spreadsheet. It also works with private spreadsheets the currently logged in user has access to in the browser you’re loading the file in.
+
+See it running: http://www.danieldemmel.me/in-browser-prototype-boilerplate/
