@@ -12,19 +12,26 @@
   <body>
     <script type="text/babel">
       let HelloTable = (props) => {
-        let injectTableMarkup = () => ({__html: props.sheetsData.html});
+        let mappable = (component) => {
+          return (x, i) => {
+            return component({key: i}, x);
+          }
+        };
+        let td = mappable(React.DOM.td);
+        let tr = mappable(React.DOM.tr);
+        let th = mappable(React.DOM.th);
+        let renderTableBody = (tableData) => {
+          return tableData.map((row, i, arr) => {
+            if(i > 0) return tr(row.cellsArray.map(td), i, arr);
+          });
+        };
         return (
           <div>
             <table className="stack hover">
               <thead>
-                <tr>
-                  {props.sheetsData.rows[0].cellsArray.map((cell, index, array) => {
-                    return <th key={index}>{cell}</th>;
-                  })}
-                </tr>
+                <tr>{props.sheetsData.rows[0].cellsArray.map(th)}</tr>
               </thead>
-              <tbody dangerouslySetInnerHTML={injectTableMarkup()}>
-              </tbody>
+              <tbody>{renderTableBody(props.sheetsData.rows)}</tbody>
             </table>
           </div>
         );
